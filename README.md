@@ -240,7 +240,7 @@ el.classList.remove('hide')
 ```
 
 ```css
-#### CSS
+/* CSS */
 .show {
   transition: opacity 400ms
 }
