@@ -206,7 +206,7 @@ const fadeIn = (el) => {
     last = +new Date()
 
     if (opacity &lt; 1) {
-      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16);
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
     }
   }
 
@@ -225,7 +225,7 @@ const fadeIn = (el) => {
     last = +new Date()
 
     if (+el.style.opacity &lt; 1) {
-      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
     }
   }
 
