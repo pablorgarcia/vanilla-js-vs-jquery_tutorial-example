@@ -205,7 +205,7 @@ const fadeIn = (el) => {
 
     last = +new Date()
 
-    if (opacity &lt; 1) {
+    if (opacity < 1) {
       (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
     }
   }
@@ -224,7 +224,7 @@ const fadeIn = (el) => {
     el.style.opacity = +el.style.opacity + (new Date() - last) / 400
     last = +new Date()
 
-    if (+el.style.opacity &lt; 1) {
+    if (+el.style.opacity < 1) {
       (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
     }
   }
@@ -288,7 +288,7 @@ $.each(array, (i, item) => {
 
 // Vanilla, IE8+
 const forEach = (array, fn) => {
-  for (var i = 0; i &lt; array.length; i++)
+  for (var i = 0; i < array.length; i++)
     fn(array[i], i)
 }
 
@@ -311,7 +311,7 @@ $.extend(true, {}, objA, objB)
 const deepExtend = (out) => {
   out = out || {}
 
-  for (let i = 1; i &lt; arguments.length; i++) {
+  for (let i = 1; i < arguments.length; i++) {
     let obj = arguments[i];
 
     if (!obj)
@@ -348,10 +348,10 @@ http://www.2ality.com/2014/01/object-assign.html ECMA6
 $.extend({}, objA, objB)
 
 // Vanilla, IE8+
-var extend = function(out) {
+var extend = (out) => {
   out = out || {}
 
-  for (var i = 1; i &lt; arguments.length; i++) {
+  for (var i = 1; i < arguments.length; i++) {
     if (!arguments[i])
       continue
 
@@ -372,8 +372,8 @@ extend({}, objA, objB);
 $.inArray(item, array);
 
 // Vanilla, IE8+
-function indexOf(array, item) {
-  for (var i = 0; i &lt; array.length; i++) {
+const indexOf = (array, item) => {
+  for (var i = 0; i < array.length; i++) {
     if (array[i] === item)
       return i;
   }
@@ -391,8 +391,8 @@ array.indexOf(item);
 $.isArray(arr);
 
 // Vanilla, IE8+
-isArray = Array.isArray || function(arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
+isArray = Array.isArray || (arr) => {
+  Object.prototype.toString.call(arr) == '[object Array]';
 };
 
 isArray(arr);
@@ -400,27 +400,27 @@ isArray(arr);
 // Vanilla, IE9+
 Array.isArray(arr);
 ```
-#### Map
+#### Map
 ```javascript
 //jQuery
-$.map(array, function(value, index){
+$.map(array, (value, index) => {
   // Code
 });
 
 // Vanilla, IE8+
-function map(arr, fn) {
-  var results = []
-  for (var i = 0; i &lt; arr.length; i++)
+const map = (arr, fn) => {
+  const results = []
+  for (let i = 0; i < arr.length; i++)
     results.push(fn(arr[i], i))
   return results
 }
 
-map(array, function(value, index){
+map(array, (value, index) => {
   // Code
 })
 
 // Vanilla, IE9+
-array.map(function(value, index){
+array.map((value, index) => {
   // Code
 })
 ```
@@ -441,8 +441,8 @@ Date.now()
 $.parseHTML(htmlString)
 
 // Vanilla, IE8+
-var parseHTML = function(str) {
-  var el = document.createElement('div')
+const parseHTML = (str) => {
+  const el = document.createElement('div')
   el.innerHTML = str
   return el.children
 }
@@ -450,8 +450,8 @@ var parseHTML = function(str) {
 parseHTML(htmlString);
 
 // Vanilla, IE9+
-var parseHTML = function(str) {
-  var tmp = document.implementation.createHTMLDocument()
+const parseHTML = (str) => {
+  const tmp = document.implementation.createHTMLDocument()
   tmp.body.innerHTML = str
   return tmp.body.children
 }
