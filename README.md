@@ -178,25 +178,28 @@ scr.src = '//openexchangerates.org/latest.json?callback=formatCurrency'
 document.body.appendChild(scr)
 ```
 
-### Effects
+## EFFECTS
 Alternatives:
 http://daneden.github.io/animate.css/
 https://github.com/visionmedia/move.js/
 
-####Fade In
+### Fade In
 ```javascript
 //jQuery
 $(el).fadeIn();
 
-#####IE8+
-function fadeIn(el) {
-  var opacity = 0;
+```
+##### IE8+
+```javascript
+// Vanilla
+const fadeIn = (el) => {
+  const opacity = 0;
 
   el.style.opacity = 0;
   el.style.filter = '';
 
-  var last = +new Date();
-  var tick = function() {
+  const last = +new Date();
+  const tick = () => {
     opacity += (new Date() - last) / 400;
     el.style.opacity = opacity;
     el.style.filter = 'alpha(opacity=' + (100 * opacity)|0 + ')';
@@ -212,13 +215,15 @@ function fadeIn(el) {
 }
 
 fadeIn(el);
-
-#####IE9+
-function fadeIn(el) {
+```
+##### IE9+
+```javascript
+// Vanilla
+const fadeIn = (el) => {
   el.style.opacity = 0;
 
-  var last = +new Date();
-  var tick = function() {
+  const last = +new Date();
+  const tick = () => {
     el.style.opacity = +el.style.opacity + (new Date() - last) / 400;
     last = +new Date();
 
@@ -231,31 +236,39 @@ function fadeIn(el) {
 }
 
 fadeIn(el);
-
-#####IE10+
+```
+##### IE10+
+```javascript
+// Vanilla
 el.classList.add('show');
 el.classList.remove('hide');
-
-#####CSS
+```
+##### CSS
+```css
 .show {
   transition: opacity 400ms;
 }
 .hide {
   opacity: 0;
 }
-
-####Hide
-
+```
+#### Hide
+```javascript
 //jQuery
 $(el).hide();
-
-#####IE8+
+```
+##### IE8+
+```javascript
+// Vanilla
 el.style.display = 'none';
-
-####Show
+```
+#### Show
+```javascript
 //jQuery
 $(el).show();
-
-#####IE8+
+```
+##### IE8+
+```javascript
+// Vanilla
 el.style.display = '';
 ```
