@@ -264,3 +264,216 @@ $(el).show()
 // Vanilla, IE8+
 el.style.display = ''
 ```
+
+## Utils
+
+#### Bind
+```javascript
+// jQuery
+$.proxy(fn, context)
+
+// Vanilla, IE8+
+fn.apply(context, arguments)
+
+// Vanilla, IE9+
+fn.bind(context)
+```
+
+#### Array Each
+```javascript
+// jQuery
+$.each(array, (i, item) => {
+  // Code
+})
+
+// Vanilla, IE8+
+const forEach = (array, fn) => {
+  for (var i = 0; i &lt; array.length; i++)
+    fn(array[i], i)
+}
+
+forEach(array, (item, i) => {
+  // Code
+})
+
+// Vanilla, IE9+
+array.forEach((item, i) => {
+  // Code
+})
+```
+
+#### Deep Extend
+```javascript
+//jQuery
+$.extend(true, {}, objA, objB)
+
+// Vanilla, IE8+
+const deepExtend = (out) => {
+  out = out || {}
+
+  for (let i = 1; i &lt; arguments.length; i++) {
+    let obj = arguments[i];
+
+    if (!obj)
+      continue
+
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object')
+          out[key] = deepExtend(out[key], obj[key]);
+        else
+          out[key] = obj[key];
+      }
+    }
+  }
+
+  return out;
+};
+
+deepExtend({}, objA, objB);
+```
+
+### Extend
+
+Alternatives:
+
+http://lodash.com/docs#assign
+
+http://underscorejs.org/#extend
+
+http://www.2ality.com/2014/01/object-assign.html ECMA6
+
+```javascript
+// jQuery
+$.extend({}, objA, objB)
+
+// Vanilla, IE8+
+var extend = function(out) {
+  out = out || {}
+
+  for (var i = 1; i &lt; arguments.length; i++) {
+    if (!arguments[i])
+      continue
+
+    for (var key in arguments[i]) {
+      if (arguments[i].hasOwnProperty(key))
+        out[key] = arguments[i][key]
+    }
+  }
+
+  return out;
+}
+
+extend({}, objA, objB);
+```
+#### Index Of
+```javascript
+//jQuery
+$.inArray(item, array);
+
+// Vanilla, IE8+
+function indexOf(array, item) {
+  for (var i = 0; i &lt; array.length; i++) {
+    if (array[i] === item)
+      return i;
+  }
+  return -1;
+}
+
+indexOf(array, item);
+
+// Vanilla, IE9+
+array.indexOf(item);
+```
+#### Is Array
+```javascript
+//jQuery
+$.isArray(arr);
+
+// Vanilla, IE8+
+isArray = Array.isArray || function(arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+isArray(arr);
+
+// Vanilla, IE9+
+Array.isArray(arr);
+```
+#### Map
+```javascript
+//jQuery
+$.map(array, function(value, index){
+  // Code
+});
+
+// Vanilla, IE8+
+function map(arr, fn) {
+  var results = []
+  for (var i = 0; i &lt; arr.length; i++)
+    results.push(fn(arr[i], i))
+  return results
+}
+
+map(array, function(value, index){
+  // Code
+})
+
+// Vanilla, IE9+
+array.map(function(value, index){
+  // Code
+})
+```
+#### Now
+```javascript
+// jQuery
+$.now()
+
+// Vanilla, IE8+
+new Date().getTime()
+
+// Vanilla, IE9+
+Date.now()
+```
+#### Parse Html
+```javascript
+// jQuery
+$.parseHTML(htmlString)
+
+// Vanilla, IE8+
+var parseHTML = function(str) {
+  var el = document.createElement('div')
+  el.innerHTML = str
+  return el.children
+}
+
+parseHTML(htmlString);
+
+// Vanilla, IE9+
+var parseHTML = function(str) {
+  var tmp = document.implementation.createHTMLDocument()
+  tmp.body.innerHTML = str
+  return tmp.body.children
+}
+
+parseHTML(htmlString)
+```
+#### Parse Json
+```javascript
+// jQuery
+$.parseJSON(string)
+
+// Vanilla, IE8+
+JSON.parse(string)
+```
+#### Trim
+```javascript
+// jQuery
+$.trim(string)
+
+// Vanilla, IE8+
+string.replace(/^\s+|\s+$/g, '')
+
+// Vanilla, IE9+
+string.trim()
+```
