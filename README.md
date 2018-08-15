@@ -4,25 +4,25 @@
 
 ```javascript
 // jQuery
-$(document).ready(function() {
+$(document).ready(() => {
   // code
 })
 
 // Vanilla
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   // code
 })
 ```
 
 ```javascript
 // jQuery
-$('a').click(function() {
+$('a').click(() => {
   // code…
 })
 
 // Vanilla
-[].forEach.call(document.querySelectorAll('a'), function(el) {
-  el.addEventListener('click', function() {
+[].forEach.call(document.querySelectorAll('a'), (el) => {
+  el.addEventListener('click', () => {
     // code…
   })
 })
@@ -32,18 +32,18 @@ $('a').click(function() {
 
 ```javascript
 // jQuery
-var divs = $('div')
+const divs = $('div')
 
 // Vanilla
-var divs = document.querySelectorAll('div')
+const divs = document.querySelectorAll('div')
 ```
 
 ```javascript
 // jQuery
-var newDiv = $('<div/>')
+const newDiv = $('<div/>')
 
 // Vanilla
-var newDiv = document.createElement('div')
+const newDiv = document.createElement('div')
 ```
 
 ## Attributes
@@ -86,10 +86,10 @@ document.body.appendChild(document.createElement('p'))
 
 ```javascript
 // jQuery
-var clonedElement = $('#about').clone()
+const clonedElement = $('#about').clone()
 
 // Vanilla
-var clonedElement = document.getElementById('about').cloneNode(true)
+const clonedElement = document.getElementById('about').cloneNode(true)
 ```
 
 ```javascript
@@ -97,7 +97,7 @@ var clonedElement = document.getElementById('about').cloneNode(true)
 $('#wrap').empty()
 
 // Vanilla
-var wrap = document.getElementById('wrap')
+const wrap = document.getElementById('wrap')
 while(wrap.firstChild) wrap.removeChild(wrap.firstChild)
 ```
 
@@ -105,10 +105,10 @@ while(wrap.firstChild) wrap.removeChild(wrap.firstChild)
 
 ```javascript
 // jQuery
-var parent = $('#about').parent()
+const parent = $('#about').parent()
 
 // Vanilla
-var parent = document.getElementById('about').parentNode
+const parent = document.getElementById('about').parentNode
 ```
 
 ```javascript
@@ -121,10 +121,10 @@ if(!document.getElementById('wrap').hasChildNodes())
 
 ```javascript
 // jQuery
-var nextElement = $('#wrap').next()
+const nextElement = $('#wrap').next()
 
 // Vanilla
-var nextElement = document.getElementById('wrap').nextSibling
+const nextElement = document.getElementById('wrap').nextSibling
 ```
 
 ## AJAX
@@ -132,13 +132,13 @@ var nextElement = document.getElementById('wrap').nextSibling
 ### GET
 ```javascript
 // jQuery
-$.get('//example.com', function (data) {
+$.get('//example.com', (data) => {
   // code
 })
 
 // Vanilla
-var httpRequest = new XMLHttpRequest()
-httpRequest.onreadystatechange = function (data) {
+const httpRequest = new XMLHttpRequest()
+httpRequest.onreadystatechange = (data) => {
   // code
 }
 httpRequest.open('GET', url)
@@ -148,13 +148,13 @@ httpRequest.send()
 ### POST
 ```javascript
 // jQuery
-$.post('//example.com', { username: username }, function (data) {
+$.post('//example.com', { username: username }, (data) => {
   // code
 })
 
 // Vanilla
-var httpRequest = new XMLHttpRequest()
-httpRequest.onreadystatechange = function (data) {
+const httpRequest = new XMLHttpRequest()
+httpRequest.onreadystatechange = (data) => {
   // code
 }
 httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
@@ -165,110 +165,102 @@ httpRequest.send('username=' + encodeURIComponent(username))
 ### JSONP
 ```javascript
 // jQuery
-$.getJSON('//openexchangerates.org/latest.json?callback=?', function (data) {
+$.getJSON('//openexchangerates.org/latest.json?callback=?', (data) => {
   // code
 })
 
 // Vanilla
-function success(data) {
+const success = (data) => {
   // code
 }
-var scr = document.createElement('script')
+const scr = document.createElement('script')
 scr.src = '//openexchangerates.org/latest.json?callback=formatCurrency'
 document.body.appendChild(scr)
 ```
 
 ## EFFECTS
 Alternatives:
+
 http://daneden.github.io/animate.css/
+
 https://github.com/visionmedia/move.js/
 
 ### Fade In
 ```javascript
 //jQuery
-$(el).fadeIn();
+$(el).fadeIn()
 
-```
-##### IE8+
-```javascript
-// Vanilla
+// Vanilla, IE8+
 const fadeIn = (el) => {
-  const opacity = 0;
+  const opacity = 0
 
-  el.style.opacity = 0;
-  el.style.filter = '';
+  el.style.opacity = 0
+  el.style.filter = ''
 
-  const last = +new Date();
+  const last = +new Date()
   const tick = () => {
-    opacity += (new Date() - last) / 400;
-    el.style.opacity = opacity;
-    el.style.filter = 'alpha(opacity=' + (100 * opacity)|0 + ')';
+    opacity += (new Date() - last) / 400
+    el.style.opacity = opacity
+    el.style.filter = 'alpha(opacity=' + (100 * opacity)|0 + ')'
 
-    last = +new Date();
+    last = +new Date()
 
     if (opacity &lt; 1) {
       (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16);
     }
-  };
+  }
 
-  tick();
+  tick()
 }
 
-fadeIn(el);
-```
-##### IE9+
-```javascript
-// Vanilla
-const fadeIn = (el) => {
-  el.style.opacity = 0;
+fadeIn(el)
 
-  const last = +new Date();
+// Vanilla, IE9+
+const fadeIn = (el) => {
+  el.style.opacity = 0
+
+  const last = +new Date()
   const tick = () => {
-    el.style.opacity = +el.style.opacity + (new Date() - last) / 400;
-    last = +new Date();
+    el.style.opacity = +el.style.opacity + (new Date() - last) / 400
+    last = +new Date()
 
     if (+el.style.opacity &lt; 1) {
-      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16);
+      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16)
     }
-  };
+  }
 
-  tick();
+  tick()
 }
 
-fadeIn(el);
+fadeIn(el)
+
+// Vanilla, IE10+
+el.classList.add('show')
+el.classList.remove('hide')
 ```
-##### IE10+
-```javascript
-// Vanilla
-el.classList.add('show');
-el.classList.remove('hide');
-```
-##### CSS
+
 ```css
+#### CSS
 .show {
-  transition: opacity 400ms;
+  transition: opacity 400ms
 }
 .hide {
-  opacity: 0;
+  opacity: 0
 }
 ```
 #### Hide
 ```javascript
 //jQuery
-$(el).hide();
-```
-##### IE8+
-```javascript
-// Vanilla
-el.style.display = 'none';
+$(el).hide()
+
+// Vanilla IE8+
+el.style.display = 'none'
 ```
 #### Show
 ```javascript
 //jQuery
-$(el).show();
-```
-##### IE8+
-```javascript
-// Vanilla
-el.style.display = '';
+$(el).show()
+
+// Vanilla, IE8+
+el.style.display = ''
 ```
