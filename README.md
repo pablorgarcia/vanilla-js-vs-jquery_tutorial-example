@@ -248,7 +248,7 @@ el.classList.remove('hide')
   opacity: 0
 }
 ```
-#### Hide
+### Hide
 ```javascript
 //jQuery
 $(el).hide()
@@ -256,7 +256,7 @@ $(el).hide()
 // Vanilla IE8+
 el.style.display = 'none'
 ```
-#### Show
+### Show
 ```javascript
 //jQuery
 $(el).show()
@@ -267,7 +267,7 @@ el.style.display = ''
 
 ## Utils
 
-#### Bind
+### Bind
 ```javascript
 // jQuery
 $.proxy(fn, context)
@@ -279,7 +279,7 @@ fn.apply(context, arguments)
 fn.bind(context)
 ```
 
-#### Array Each
+### Array Each
 ```javascript
 // jQuery
 $.each(array, (i, item) => {
@@ -302,7 +302,7 @@ array.forEach((item, i) => {
 })
 ```
 
-#### Deep Extend
+### Deep Extend
 ```javascript
 //jQuery
 $.extend(true, {}, objA, objB)
@@ -333,7 +333,7 @@ const deepExtend = (out) => {
 deepExtend({}, objA, objB);
 ```
 
-### Extend
+## Extend
 
 Alternatives:
 
@@ -366,7 +366,7 @@ var extend = (out) => {
 
 extend({}, objA, objB);
 ```
-#### Index Of
+### Index Of
 ```javascript
 //jQuery
 $.inArray(item, array);
@@ -385,7 +385,7 @@ indexOf(array, item);
 // Vanilla, IE9+
 array.indexOf(item);
 ```
-#### Is Array
+### Is Array
 ```javascript
 //jQuery
 $.isArray(arr);
@@ -400,7 +400,7 @@ isArray(arr);
 // Vanilla, IE9+
 Array.isArray(arr);
 ```
-#### Map
+### Map
 ```javascript
 //jQuery
 $.map(array, (value, index) => {
@@ -424,7 +424,7 @@ array.map((value, index) => {
   // Code
 })
 ```
-#### Now
+### Now
 ```javascript
 // jQuery
 $.now()
@@ -435,7 +435,7 @@ new Date().getTime()
 // Vanilla, IE9+
 Date.now()
 ```
-#### Parse Html
+### Parse Html
 ```javascript
 // jQuery
 $.parseHTML(htmlString)
@@ -458,7 +458,7 @@ const parseHTML = (str) => {
 
 parseHTML(htmlString)
 ```
-#### Parse Json
+### Parse Json
 ```javascript
 // jQuery
 $.parseJSON(string)
@@ -466,7 +466,7 @@ $.parseJSON(string)
 // Vanilla, IE8+
 JSON.parse(string)
 ```
-#### Trim
+### Trim
 ```javascript
 // jQuery
 $.trim(string)
