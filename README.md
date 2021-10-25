@@ -1,4 +1,4 @@
-# Vanilla JS vs jQuery
+# Vanilla JS vs jQuery Tutorial example
 
 ## Events
 
